@@ -22,17 +22,17 @@ function Landing() {
         </button>
 
         <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-          <a href="/login" className="nav-link">
+          <Link to="/login" className="nav-link">
             Dashboard
-          </a>
+          </Link>
 
-          <a href="/login" className="nav-link">
+          <Link to="/login" className="nav-link">
             Resume Analysis
-          </a>
+          </Link>
 
-          <a href="/register" className="nav-link">
+          <Link to="/register" className="nav-link">
             ATS Builder
-          </a>
+          </Link>
         </div>
 
         <Link to="/register">
