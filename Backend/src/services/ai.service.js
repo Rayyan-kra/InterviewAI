@@ -130,9 +130,12 @@ async function generateInterviewReport({
 async function generatePdfFromHtml(htmlContent) {
     console.log("Puppeteer path:", await puppeteer.executablePath());
   const browser = await puppeteer.launch({
-    executablePath: await puppeteer.executablePath(),
     headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+    ],
   });
 
   const page = await browser.newPage();
