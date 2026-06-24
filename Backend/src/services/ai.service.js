@@ -34,12 +34,12 @@ const interviewReportSchema = z.object({
 
 async function generateInterviewReport({ resume, selfDescription, jobDescription }) {
 
-
+    for (let attempt = 1; attempt <= 3; attempt++) {
+    try{
     const prompt = `Generate an interview report for a candidate with the following details:
                         Resume: ${resume}
                         Self Description: ${selfDescription}
-                        Job Description: ${jobDescription}
-`
+                        Job Description: ${jobDescription}`
 
     const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
@@ -51,10 +51,17 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
     })
 
     return JSON.parse(response.text)
+}catch(error){
+           console.error(`Attempt ${attempt} failed:`, error);
 
+           if (attempt === 3) {
+             throw error;
+           }
 
+           await new Promise((resolve) => setTimeout(resolve, 3000));
 }
-
+}
+}
 
 
 async function generatePdfFromHtml(htmlContent) {
