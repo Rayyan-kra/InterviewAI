@@ -128,6 +128,7 @@ async function generateInterviewReport({
 }
 
 async function generatePdfFromHtml(htmlContent) {
+    console.log("Puppeteer path:", await puppeteer.executablePath());
   const browser = await puppeteer.launch({
     executablePath: await puppeteer.executablePath(),
     headless: true,
