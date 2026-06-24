@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import "../Landing.scss";
 
+
+
 function Landing() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="landing">
       <video className="background-video" autoPlay muted loop playsInline>
@@ -13,7 +17,11 @@ function Landing() {
           <span>i</span>
         </div>
 
-        <div className="nav-links">
+        <button className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
+
+        <div className={`nav-links ${menuOpen ? "active" : ""}`}>
           <a href="/login" className="nav-link">
             Dashboard
           </a>
@@ -26,6 +34,7 @@ function Landing() {
             ATS Builder
           </a>
         </div>
+
         <Link to="/register">
           <button className="nav-btn">Get Started ↗</button>
         </Link>
@@ -46,24 +55,24 @@ function Landing() {
         </div>
       </section>
       <div className="hero-tags">
-  <span>AI Powered</span>
-  <span>Resume Analysis</span>
-  <span>ATS Score</span>
-  <span>Mock Interviews</span>
-  <span>Daily Roadmap</span>
-</div>
+        <span>AI Powered</span>
+        <span>Resume Analysis</span>
+        <span>ATS Score</span>
+        <span>Mock Interviews</span>
+        <span>Daily Roadmap</span>
+      </div>
 
-<div className="hero-stats">
-  <div className="stat-card">
-    <h3>85%</h3>
-    <p>Interview Readiness</p>
-  </div>
+      <div className="hero-stats">
+        <div className="stat-card">
+          <h3>85%</h3>
+          <p>Interview Readiness</p>
+        </div>
 
-  <div className="stat-card">
-    <h3>5x</h3>
-    <p>Faster Preparation</p>
-  </div>
-</div>
+        <div className="stat-card">
+          <h3>5x</h3>
+          <p>Faster Preparation</p>
+        </div>
+      </div>
       {/* Second Video Section */}
 
       {/* Features Section */}
